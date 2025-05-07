@@ -21,18 +21,35 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   var _sayac = 0;
 
   void _sayaciArttir() {
-    _sayac++;
+    setState(() {
+      _sayac++;
+    });
     debugPrint("Sayacın şu anki değeri $_sayac");
   }
 
   void _sayaciAzalt() {
-    _sayac--;
+    setState(() {
+      _sayac--;
+    });
     debugPrint("Sayacın şu anki değeri $_sayac");
+  }
+
+  void _sayacSifirla() {
+    setState(() {
+      _sayac = 0;
+    });
+    debugPrint("Sayaç sıfırlandı!");
   }
 
   @override
@@ -49,7 +66,9 @@ class HomePage extends StatelessWidget {
             ),
             Text(
               _sayac.toString(),
-              style: Theme.of(context).textTheme.displayMedium,
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                color: _sayac < 0 ? Colors.red : Colors.green
+              ),
             ),
           ],
         ),
@@ -57,6 +76,13 @@ class HomePage extends StatelessWidget {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          FloatingActionButton(
+            onPressed: () {
+              _sayacSifirla();
+            },
+            child: Icon(Icons.refresh),
+          ),
+          SizedBox(height: 4),
           FloatingActionButton(
             onPressed: () {
               _sayaciArttir();

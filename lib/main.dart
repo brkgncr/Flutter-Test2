@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
+  debugPrint("Main metodu tetiklendi");
   runApp(MyApp());
 }
 
@@ -9,11 +10,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("MyApp build metodu tetiklendi");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        textTheme: TextTheme(),
+        primarySwatch: Colors.red,
+        textTheme: TextTheme(
+          labelLarge: TextStyle(
+            color: Colors.red,
+            fontSize: 24,
+          )
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.yellow,
+        ),
         useMaterial3: false,
       ),
       home: HomePage(),
@@ -54,6 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Honepage build metodu tetiklendi");
+
     return Scaffold(
       appBar: AppBar(title: Text("Bölüm 2")),
       body: Center(
@@ -84,6 +96,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 4),
           FloatingActionButton(
+            backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () {
               _sayaciArttir();
             },

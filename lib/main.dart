@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_temelleri_bolum2_app/buton_turleri.dart';
 
 void main(List<String> args) {
   debugPrint("Main metodu tetiklendi");
@@ -14,19 +15,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        textTheme: TextTheme(
-          labelLarge: TextStyle(
-            color: Colors.red,
-            fontSize: 24,
-          )
+        primarySwatch: Colors.blue,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
         ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Colors.yellow,
+        textTheme: TextTheme(
+          labelLarge: TextStyle(color: Colors.red, fontSize: 24),
         ),
         useMaterial3: false,
       ),
-      home: HomePage(),
+      home: ButonTurleri(),
     );
   }
 }
@@ -79,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               _sayac.toString(),
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                color: _sayac < 0 ? Colors.red : Colors.green
+                color: _sayac < 0 ? Colors.red : Colors.green,
               ),
             ),
           ],

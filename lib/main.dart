@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_temelleri_bolum2_app/buton_turleri.dart';
+import 'package:flutter_temelleri_bolum2_app/dropdown_popup.dart';
 import 'package:flutter_temelleri_bolum2_app/resim_widgetlari.dart';
 
 void main(List<String> args) {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: false,
       ),
-      home: ResimWidgetlari(),
+      home: DropdownPopup(),
     );
   }
 }
